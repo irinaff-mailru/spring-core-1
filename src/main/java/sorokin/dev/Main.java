@@ -1,22 +1,27 @@
 package sorokin.dev;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import sorokin.dev.task2.GreetingPrinterConstructor;
-import sorokin.dev.task2.GreetingPrinterField;
-import sorokin.dev.task2.GreetingPrinterSetter;
-import sorokin.dev.task2.Task2Configuration;
+import sorokin.dev.task3.CounterBean;
+import sorokin.dev.task3.PrototypeCounterBean;
+import sorokin.dev.task3.Task3Configuration;
 
 public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(Task2Configuration.class);
-        GreetingPrinterConstructor greetingPrinter1 = context.getBean(GreetingPrinterConstructor.class);
-        greetingPrinter1.print("Ivan");
+                new AnnotationConfigApplicationContext(Task3Configuration.class);
+        CounterBean counterBean1 = context.getBean(CounterBean.class);
+        CounterBean counterBean2 = context.getBean(CounterBean.class);
+        counterBean1.increment();
+        System.out.println(counterBean1.getCount() == counterBean2.getCount());
 
-        GreetingPrinterField greetingPrinter2 = context.getBean(GreetingPrinterField.class);
-        greetingPrinter2.print("Ivan");
+        PrototypeCounterBean counterBean3 = context.getBean(PrototypeCounterBean.class);
+        PrototypeCounterBean counterBean4 = context.getBean(PrototypeCounterBean.class);
+        counterBean3.increment();
+        System.out.println(counterBean3.getCount() == counterBean4.getCount());
 
-        GreetingPrinterSetter greetingPrinter3 = context.getBean(GreetingPrinterSetter.class);
-        greetingPrinter3.print("Ivan");
+        System.out.println(counterBean1.getCount());
+        System.out.println(counterBean2.getCount());
+        System.out.println(counterBean3.getCount());
+        System.out.println(counterBean4.getCount());
     }
 }
