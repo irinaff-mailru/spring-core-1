@@ -1,4 +1,4 @@
-package sorokin.dev;
+package sorokin.dev.task1;
 
 public class UserMessageService {
 
