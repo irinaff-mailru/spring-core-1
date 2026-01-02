@@ -1,10 +1,8 @@
-package sorokin.dev;
+package sorokin.dev.task5;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import sorokin.dev.task5.AdditionalConfig;
-import sorokin.dev.task5.AppProperties;
 
 @SpringBootApplication
 public class PropertyDemoApp {
